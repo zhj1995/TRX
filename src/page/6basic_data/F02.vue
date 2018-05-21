@@ -1,6 +1,6 @@
 <template>
   <div>
-      容器管理 F02
+      容器管理管理 F02
   </div>
 </template>
 
