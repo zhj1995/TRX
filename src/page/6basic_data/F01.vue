@@ -1160,7 +1160,7 @@ export default {
 <style scope>
   .el-select.inner .el-input{
     width: 100px;
-    color: #009900;
+    color: #cccccc;
   }
   .input-with-select .el-input-group__prepend {
     background-color: #e5fff2;

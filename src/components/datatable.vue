@@ -1,10 +1,23 @@
 <template>
     <div class="datatable">
-        <el-button-group style="margin-bottom:20px;">
-            <el-button type="primary" icon="el-icon-edit" @click="Create" size="small">新建</el-button>
-            <el-button type="danger" icon="el-icon-delete" @click="SelectDelete" size="small">删除</el-button>
-            <el-button type="info" icon="el-icon-refresh" @click="refreshData" size="small">刷新</el-button>
-        </el-button-group>
+        <el-row :span="24" style="margin-bottom:20px;">
+            <el-col :span="5">
+                <el-button-group>
+                    <el-button type="primary" icon="el-icon-edit" @click="Create" size="small">新建</el-button>
+                    <el-button type="danger" icon="el-icon-delete" @click="SelectDelete" size="small">删除</el-button>
+                    <el-button type="info" icon="el-icon-refresh" @click="refreshData" size="small">刷新</el-button>
+                </el-button-group>
+            </el-col>
+            <el-col :span="4" :offset="1">
+                <slot name="select1"></slot>
+            </el-col>
+            <el-col :span="4" :offset="1">
+                <slot name="select2"></slot>
+            </el-col>
+            <el-col :span="7" :offset="1">
+                <slot name="search"></slot>
+            </el-col>
+        </el-row>
 
         <el-table
             border
