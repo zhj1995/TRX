@@ -46,6 +46,7 @@ const store = new Vuex.Store({
 	pw_user_table:[],//pw_user表,
 	pw_user_group:[],//pw_user_group表,
 	sys_tbl_clmn_set:[],//数据库管理表,
+	sys_tbl_clmn:[],//数据库管理表,
 	im_container:[],//容器管理
 	currentTime:''//计时器用的当前时间
   },
@@ -62,6 +63,10 @@ const store = new Vuex.Store({
 	//填充数据管理表
 	set_sys_tbl_clmn_set(state, data){
 		state.sys_tbl_clmn_set = data;
+	},
+	//填充配置表
+	set_sys_tbl_clmn(state, data){
+		state.sys_tbl_clmn = data;
 	},
 	//登录用户信息
 	set_current_user(state, data){
@@ -111,7 +116,7 @@ const store = new Vuex.Store({
 	  })
 	},
 	//获取pw_user_group的值
-	get_pw_user_group ({commit}){
+	get_pw_user_group ({commit},current_group_role){
 		axios.get('http://localhost/TRX/api/pw_user_group/getall')
 		.then(function(res){
 			setTimeout(() => {
@@ -127,6 +132,17 @@ const store = new Vuex.Store({
 		.then(function(res){
 			setTimeout(() => {
 				commit('set_sys_tbl_clmn_set',res.data)
+			}, 0);
+		}).catch(function(error){
+			alert(error);
+		})
+	},
+	//获取配置表的值
+	get_sys_tbl_clmn({commit},current_tb){
+		axios.get('http://localhost/TRX/api/sys_tbl_clmn_set' + '/tb_name/' +current_tb.current_tb_name + '/username/' + current_tb.current_name + '/userid/' + current_tb.current_id)
+		.then(function(res){
+			setTimeout(() => {
+				commit('set_sys_tbl_clmn',res.data)
 			}, 0);
 		}).catch(function(error){
 			alert(error);

@@ -62,6 +62,8 @@
       </el-table-column>
       <el-table-column prop="u_create_name" label="u_create_name" width="150">
       </el-table-column>
+      <el-table-column prop="column_type" label="column_type" width="150">
+      </el-table-column>
       <el-table-column prop="u_create_id" label="u_create_id" width="150">
       </el-table-column>
       <el-table-column prop="t_create" label="t_create" width="250">
@@ -214,6 +216,7 @@ export default {
           alert(error);
         })
       });
+      _this.$store.dispatch('get_sys_tbl_clmn_set', _this.current_tb);
       this.selectrow = [];
     }
   },
